@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+</head>
+<body>
+    <h1>Registro de Usuario</h1>
+    
+    <!-- Formulario para registrar un usuario -->
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}  <!-- Genera un campo CSRF -->
+        
+        <!-- Campo para el nombre -->
+        <div>
+            <label for="nombre">Nombre:</label>
+            {{ form.nombre(class="form-control") }}
+            {% if form.nombre.errors %}
+                <ul>
+                    {% for error in form.nombre.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Campo para el correo -->
+        <div>
+            <label for="correo">Correo:</label>
+            {{ form.correo(class="form-control") }}
+            {% if form.correo.errors %}
+                <ul>
+                    {% for error in form.correo.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Campo para la contraseña -->
+        <div>
+            <label for="contraseña">Contraseña:</label>
+            {{ form.contraseña(class="form-control") }}
+            {% if form.contraseña.errors %}
+                <ul>
+                    {% for error in form.contraseña.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <!-- Botón de submit -->
+        <div>
+            <button type="submit">Registrar</button>
+        </div>
+    </form>
+</body>
+</html>
